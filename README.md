@@ -1,9 +1,12 @@
 # build_openssl
 
-Bash script for building OpenSSL development libraries for iOS and macOS.
+Bash scripts for building OpenSSL development libraries for iOS and macOS.
 
 This requires an Internet connection and the latest Xcode installed.
-It downloads OpenSSL source code and builds iOS fat library containing iphoneos (arm64) and iphonesimulator (x86_64) targets.
+The scripts downloads the OpenSSL source code and builds OpenSSL library for the appropriate target.
+
+For iOS, it builds a fat library containing iphoneos (arm64) and iphonesimulator (x86_64) targets.
+For macOS, it builds an ordinary darwin64 library.
 
 ## Building
 
