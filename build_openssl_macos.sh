@@ -49,7 +49,7 @@ build_openssl_macos() {
   fi
   mkdir -p ${OUTPUT_DIR?}
   cd ${BUILD_DIR?}/openssl-${OPENSSL_VERSION?}
-  make install
+  make install_sw install_ssldirs
 }
 
 #----------------------------------------------------------------------
@@ -60,7 +60,10 @@ deploy_openssl_macos() {
     rm -rf ${OPENSSL_DIR?}
   fi
   mkdir -p ${OPENSSL_DIR?}
-  tar -C ${OUTPUT_DIR?} -cf - . | tar -C ${OPENSSL_DIR?} -xf -
+  tar -C ${OUTPUT_DIR?} -cf - \
+    include \
+    lib/lib{crypto,ssl}.a include \
+    | tar -C ${OPENSSL_DIR?} -xf -
 }
 
 #----------------------------------------------------------------------
